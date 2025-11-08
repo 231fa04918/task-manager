@@ -1,12 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-// const API_URI = "http://localhost:8800/api"
-const API_URI = import.meta.env.VITE_APP_BASE_URL
-
-const baseQuery = fetchBaseQuery({ baseUrl: API_URI + "/api" })
-
 export const apiSlice = createApi({
-    baseQuery,
-    tagTypes: [],
-    endpoints: (builder) => ({}),
+  baseQuery: fetchBaseQuery({
+    baseUrl: import.meta.env.VITE_API_BASE_URL, // example: https://task-manager-pzkz.onrender.com/api
+    credentials: "include", // ✅ REQUIRED so cookies are always sent
+  }),
+  tagTypes: ["User", "Task"],
+  endpoints: () => ({}),
 })
